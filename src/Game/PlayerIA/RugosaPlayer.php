@@ -17,14 +17,18 @@ class RugosaPlayer extends Player
 
     public function getChoice()
     {
-        if ($this->result->getLaschoiceFor($this->opponentSide) == 0)
+        if ($this->result->getLastChoiceFor($this->opponentSide) === 0) {
             return parent::paperChoice();
-        elseif ($this->result->getLastChoiceFor($this->opponentSide) == 'scissors')
+        }
+        elseif ($this->result->getLastChoiceFor($this->opponentSide) === 'scissors') {
             return parent::rockChoice();
-        elseif ($this->result->getLastChoiceFor($this->opponentSide) == 'rock')
+        }
+        elseif ($this->result->getLastChoiceFor($this->opponentSide) === 'rock') {
             return parent::paperChoice();
-        elseif ($this->result->getLastChoiceFor($this->opponentSide) == 'paper')
+        }
+        elseif ($this->result->getLastChoiceFor($this->opponentSide) === 'paper') {
             return parent::scissorsChoice();
+        }
         return parent::paperChoice();
     }
 };
