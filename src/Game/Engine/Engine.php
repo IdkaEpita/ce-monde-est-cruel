@@ -14,7 +14,7 @@ use Hackathon\PlayerIA\Player;
 class Engine
 {
     // The maximum round plays in a match
-    public $maxRound = 1000;
+    public $maxRound = 10;
 
     // Set it to true, if you want to display infos into the console
     public $consoleOutput = false;
