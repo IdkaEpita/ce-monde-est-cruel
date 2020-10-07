@@ -18,8 +18,19 @@ class RugosaPlayer extends Player
     public function getChoice()
     {
 
+        $opname = $this->result->getStatsFor($this->opponentSide)['name'][0];
+
+
         if ($this->result->getLastChoiceFor($this->opponentSide) === 0) {
-            return parent::paperChoice();
+            if (ord($opname)%3 === 0) {
+                return parent::paperChoice();
+            }
+            elseif (ord($opname)%3 === 1) {
+                return parent::scissorsChoice();
+            }
+            else {
+                return parent::rockChoice();
+            }
         }
 
         $stat = $this->result->getChoicesFor($this->opponentSide);
