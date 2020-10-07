@@ -7,7 +7,7 @@ use Hackathon\Game\Result;
 /**
  * Class RugosaPlayers
  * @package Hackathon\PlayerIA
- * @author YOUR NAME HERE
+ * @author Arthur Laurent
  */
 class RugosaPlayer extends Player
 {
@@ -42,7 +42,7 @@ class RugosaPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
 
 
-        return parent::rockChoice();
+        return parent::paperChoice();
 
     }
 };
