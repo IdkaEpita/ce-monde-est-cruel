@@ -68,6 +68,18 @@ class RugosaPlayer extends Player
             }
         }
 
+        if ($lastmove === $bblastmove) {
+            if ($blastmove === 'paper'){
+                return parent::scissorsChoice();
+            }
+            if ($blastmove === 'scissors'){
+                return parent::rockChoice();
+            }
+            if ($blastmove === 'rock'){
+                return parent::paperChoice();
+            }
+        }
+
         if (($this->result->getNbRound() > 1) and $this->result->getLastChoiceFor($this->opponentSide) === 'scissors' and $this->result->getLastChoiceFor($this->mySide) === 'paper') {
             return parent::paperChoice();
         }
