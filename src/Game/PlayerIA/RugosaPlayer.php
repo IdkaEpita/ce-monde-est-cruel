@@ -9,6 +9,15 @@ use Hackathon\Game\Result;
  * @package Hackathon\PlayerIA
  * @author Arthur Laurent
  */
+
+/*
+ * Premier tour : modulo sur la deuxième lettre du nom de l'adversaire pour le premier choice
+ * 1. Check si un choix est trop utilisé par l'opponent pour choisir le move
+ * 2. check si les 3 derniers choix de l'adversaire sont les mêmes, dans le cas échéant, le contrer
+ * 3. check à partir des 3 derniers choix si l'adversaire fait un coup sur deux un choix particulier
+ * 4. blocage de l'algo qui est censé contrer l'algo qui joue l'inverse de ce que l'opponent a joué la fois d'avant
+ * 5. algo qui choisi l'inverse de ce que l'opponent a joué au round dernier.
+ */
 class RugosaPlayer extends Player
 {
     protected $mySide;
@@ -18,7 +27,7 @@ class RugosaPlayer extends Player
     public function getChoice()
     {
 
-        $opname = $this->result->getStatsFor($this->opponentSide)['name'][0];
+        $opname = $this->result->getStatsFor($this->opponentSide)['name'][1];
 
 
         if ($this->result->getLastChoiceFor($this->opponentSide) === 0) {
