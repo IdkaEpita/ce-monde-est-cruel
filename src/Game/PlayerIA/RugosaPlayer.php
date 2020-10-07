@@ -23,10 +23,15 @@ class RugosaPlayer extends Player
         }
 
         $stat = $this->result->getChoicesFor($this->opponentSide);
+        $lastmove = 'paper';
+        $blastmove = 'paper';
+        $bblastmove = 'paper';
+        $rround = 0;
         $paper = 0;
         $rock = 0;
         $scissors = 0;
         foreach ($stat as &$value) {
+
             if ($value == parent::rockChoice()){
                 $rock += 1;
             }
@@ -36,6 +41,10 @@ class RugosaPlayer extends Player
             if ($value == parent::scissorsChoice()){
                 $scissors += 1;
             }
+            $bblastmove = $blastmove;
+            $blastmove = $lastmove;
+            $lastmove = $value;
+            $rround += 1;
         }
         if ($paper > $rock + $scissors) {
             return parent::scissorsChoice();
@@ -45,6 +54,18 @@ class RugosaPlayer extends Player
         }
         if ($rock > $paper + $scissors) {
             return parent::paperChoice();
+        }
+
+        if ($lastmove === $blastmove and $blastmove === $bblastmove) {
+            if ($lastmove === 'paper'){
+                return parent::scissorsChoice();
+            }
+            if ($lastmove === 'scissors'){
+                return parent::rockChoice();
+            }
+            if ($lastmove === 'rock'){
+                return parent::paperChoice();
+            }
         }
 
         if (($this->result->getNbRound() > 1) and $this->result->getLastChoiceFor($this->opponentSide) === 'scissors' and $this->result->getLastChoiceFor($this->mySide) === 'paper') {
